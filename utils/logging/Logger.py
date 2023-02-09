@@ -12,7 +12,7 @@ class Logger:
         logger = logging.getLogger(name)
         logger.setLevel(log_level)
         file_handler = logging.FileHandler(f"logs/log-{str(datetime.now().strftime('%Y-%m-%d:%H:%M'))}.log", mode="w")
-        formatter = logging.Formatter('%(asctime)s [%(levelname)s] : %(message)s')
+        formatter = logging.Formatter('%(asctime)s [%(levelname)s] [%(name)s] : %(message)s')
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
         return logger
