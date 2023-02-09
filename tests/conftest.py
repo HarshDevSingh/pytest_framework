@@ -10,7 +10,8 @@ from utils.logging.Logger import Logger
 @pytest.fixture(scope="class")
 def load_generic_requirements(setup_driver, request):
     pages = Pages(request.cls.driver)
-    request.cls.pages=pages
+    request.cls.pages = pages
+    request.cls.logger = Logger().logger()
     yield
 
 
