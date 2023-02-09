@@ -2,6 +2,8 @@ import argparse
 import os
 import subprocess
 
+os.environ['PYTHONPATH'] = os.environ.get('PYTHONPATH', '') + ':' + os.getcwd()
+
 
 def _test_command_builder(verbose=True, test_file_loc: str = ""):
     s = ""

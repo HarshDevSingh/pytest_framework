@@ -2,11 +2,15 @@ import pytest
 from selenium import webdriver
 from webdriver_manager import chrome, firefox
 from selenium.webdriver.chrome.service import Service
+from tests.get_pages import Pages
 import os
+from utils.logging.Logger import Logger
 
 
 @pytest.fixture(scope="class")
-def load_generic_requirements(request):
+def load_generic_requirements(setup_driver, request):
+    pages = Pages(request.cls.driver)
+    request.cls.pages=pages
     yield
 
 
@@ -35,5 +39,3 @@ def setup_driver(request):
         raise Exception("unable to create/get driver")
     yield
     driver.close()
-
-

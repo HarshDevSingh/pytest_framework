@@ -1,19 +1,18 @@
-import pytest
 from ..base_test import BaseTest
-from tests.get_pages import Pages
+from utils.logging.Logger import Logger
 
 
-@pytest.mark.usefixtures("setup_driver")
 class TestLogin(BaseTest):
 
-    def test_open_login(self):
-        pages = Pages(self.driver)
-        pages.login_page().open()
+    logger = Logger().logger()
 
+    def test_open_login(self):
+        self.logger.info("test_open_login execution started")
+        self.pages.login_page().open()
 
     def test_login(self):
-        pages = Pages(self.driver)
-        pages.login_page().open()
-        pages.login_page().enter_username("standard_user")
-        pages.login_page().enter_password("secret_sauce")
-        pages.login_page().submit_login_form()
+        self.logger.info("test_login execution started")
+        self.pages.login_page().open()
+        self.pages.login_page().enter_username("standard_user")
+        self.pages.login_page().enter_password("secret_sauce")
+        self.pages.login_page().submit_login_form()
